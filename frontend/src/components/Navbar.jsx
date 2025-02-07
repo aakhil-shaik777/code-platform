@@ -43,10 +43,12 @@ function Navbar() {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-15">
-            <Link to="/" className="hover:text-gray-200 text-3xl px-6 py-4">Home</Link>
-            <Link to="/courses" className="hover:text-gray-200 text-3xl px-6 py-4">Courses</Link>
-            <Link to="/about" className="hover:text-gray-200 text-3xl px-6 py-4">About Us</Link>
+          <div className="hidden md:flex space-x-2 ml-auto">
+            <Link to="/" className="hover:text-gray-200 text-2xl px-6 py-4">Home</Link>
+            <Link to="/courses" className="hover:text-gray-200 text-2xl px-6 py-4">Courses</Link>
+            <Link to="/about" className="hover:text-gray-200 text-2xl px-6 py-4">About Us</Link>
+            <Link to="/blog" className="hover:text-gray-200 text-2xl px-6 py-4">Blog</Link>
+
           </div>
 
           {/* Circular Button for Account */}
@@ -80,16 +82,6 @@ function Navbar() {
                     >
                       Dashboard
                     </button>
-
-                    {/* Games Button */}
-                    <button 
-                      className="w-full text-left px-4 py-2 text-blue-600 hover:bg-gray-100 rounded mt-2"
-                      onClick={() => navigate("/games")}
-                    >
-                      Games
-                    </button>
-
-                    <div className="border-t my-2"></div>
 
                     {/* Progress Bar */}
                     <div>
@@ -131,6 +123,8 @@ function Navbar() {
           <Link to="/" className="hover:text-gray-200 text-xl">Home</Link>
           <Link to="/courses" className="hover:text-gray-200 text-xl">Courses</Link>
           <Link to="/about" className="hover:text-gray-200 text-xl">About Us</Link>
+          <Link to="/blog" className="hover:text-gray-200 text-xl">Blog</Link>
+
         </div>
       )}
     </nav>

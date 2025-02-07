@@ -3,7 +3,7 @@ import { FaGithub, FaLinkedin, FaInstagram, FaTwitter } from "react-icons/fa";
 
 export default function AboutUs() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-6 bg-gradient-to-r from-blue-500 via-indigo-600 to-purple-700">
+    <div className="flex flex-col items-center justify-center min-h-screen p-6 ">
       <motion.h1
         className="text-4xl font-bold text-white mb-6"
         initial={{ opacity: 0, y: -20 }}

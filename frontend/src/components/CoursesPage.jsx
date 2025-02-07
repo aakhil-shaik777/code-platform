@@ -57,9 +57,38 @@ const courses = {
 
 function CoursesPage() {
   const [showVideo, setShowVideo] = useState(false);
+  const [startTime, setStartTime] = useState(null);
 
   const toggleVideo = () => {
     setShowVideo(!showVideo);
+  };
+
+  const handleCourseClick = (course) => {
+    // Update completed projects and skills mastered in local storage
+    const completedProjects = parseInt(localStorage.getItem("completedProjects") || "0", 10) + 1;
+    const skillsMastered = parseInt(localStorage.getItem("skillsMastered") || "0", 10) + 1;
+
+    localStorage.setItem("completedProjects", completedProjects);
+    localStorage.setItem("skillsMastered", skillsMastered);
+
+    // Start timer if not already started
+    if (!startTime) {
+      setStartTime(Date.now());
+    }
+  };
+
+  const handleVideoEnd = () => {
+    if (startTime) {
+      const endTime = Date.now();
+      const timeSpent = (endTime - startTime) / 1000 / 60 / 60; // Convert milliseconds to hours
+
+      // Update hours spent in local storage
+      const hoursSpent = parseFloat(localStorage.getItem("hoursSpent") || "0") + timeSpent;
+      localStorage.setItem("hoursSpent", hoursSpent.toFixed(2));
+
+      // Reset start time
+      setStartTime(null);
+    }
   };
 
   return (
@@ -77,6 +106,7 @@ function CoursesPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-blue-500 text-white py-2 px-6 rounded-md hover:bg-blue-600 block mb-2"
+                onClick={() => handleCourseClick(course)}
               >
                 Watch Video
               </a>
@@ -103,6 +133,7 @@ function CoursesPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-blue-500 text-white py-2 px-6 rounded-md hover:bg-blue-600 block mb-2"
+                onClick={() => handleCourseClick(course)}
               >
                 Watch Video
               </a>
@@ -129,6 +160,7 @@ function CoursesPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-blue-500 text-white py-2 px-6 rounded-md hover:bg-blue-600 block mb-2"
+                onClick={() => handleCourseClick(course)}
               >
                 Watch Video
               </a>
@@ -163,6 +195,7 @@ function CoursesPage() {
               src="src/assets/Recording 2025-01-30 183152.mp4"
               type="video/mp4"
               className="rounded-lg shadow-lg"
+              onEnded={handleVideoEnd}
             >
               Your browser does not support the video tag.
             </video>
